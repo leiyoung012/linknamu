@@ -12,6 +12,13 @@ const geistMono = localFont({
   variable: "--font-geist-mono",
   weight: "100 900",
 });
+const pretendard = localFont({
+  src: [
+    { path: "./fonts/Pretendard-Regular.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/Pretendard-SemiBold.woff2", weight: "600", style: "normal" },
+  ],
+  variable: "--font-pretendard",
+});
 
 export const metadata: Metadata = {
   title: "링크나무",
@@ -39,7 +46,7 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${pretendard.variable} antialiased`}
       >
         {children}
       </body>

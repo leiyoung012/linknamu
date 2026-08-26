@@ -10,13 +10,13 @@ export default function ProfileHeader({
 
   return (
     <div className="flex flex-col items-center text-center">
-      <div className="h-24 w-24 overflow-hidden rounded-full bg-black/10 dark:bg-white/10">
+      <div className="h-28 w-28 overflow-hidden rounded-full bg-black/10 shadow-[0_12px_28px_-8px_rgba(120,72,32,0.35)] ring-4 ring-white/70 dark:bg-white/10 dark:shadow-[0_12px_28px_-8px_rgba(0,0,0,0.5)] dark:ring-white/10">
         {profile.avatarUrl ? (
           <Image
             src={profile.avatarUrl}
             alt={profile.name}
-            width={96}
-            height={96}
+            width={112}
+            height={112}
             className="h-full w-full object-cover"
           />
         ) : (
@@ -25,8 +25,8 @@ export default function ProfileHeader({
           </div>
         )}
       </div>
-      <h1 className="mt-4 text-xl font-semibold">{profile.name}</h1>
-      <p className="mt-1 text-sm text-black/60 dark:text-white/60">
+      <h1 className="mt-5 text-xl font-semibold tracking-tight">{profile.name}</h1>
+      <p className="mt-1.5 text-sm text-black/55 dark:text-white/55">
         {profile.bio}
       </p>
     </div>
