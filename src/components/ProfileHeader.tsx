@@ -10,14 +10,15 @@ export default function ProfileHeader({
 
   return (
     <div className="flex flex-col items-center text-center">
-      <div className="h-28 w-28 overflow-hidden rounded-full bg-black/10 shadow-[0_12px_28px_-8px_rgba(120,72,32,0.35)] ring-4 ring-white/70 dark:bg-white/10 dark:shadow-[0_12px_28px_-8px_rgba(0,0,0,0.5)] dark:ring-white/10">
+      <div className="h-28 w-28 overflow-hidden rounded-full bg-white p-2.5 shadow-[0_12px_28px_-8px_rgba(120,72,32,0.35)] ring-4 ring-white/70 dark:shadow-[0_12px_28px_-8px_rgba(0,0,0,0.5)] dark:ring-white/10">
         {profile.avatarUrl ? (
           <Image
             src={profile.avatarUrl}
             alt={profile.name}
-            width={112}
-            height={112}
-            className="h-full w-full object-cover"
+            width={224}
+            height={224}
+            quality={90}
+            className="h-full w-full object-contain object-center"
           />
         ) : (
           <div className="flex h-full w-full items-center justify-center text-3xl font-semibold text-black/40 dark:text-white/40">
