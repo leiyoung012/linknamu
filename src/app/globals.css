@@ -3,27 +3,27 @@
 @tailwind utilities;
 
 :root {
-  --background: #fdf8f2;
-  --foreground: #3a2f2a;
-  --bg-gradient-from: #fff8ee;
-  --bg-gradient-to: #ffe3cf;
-  --card-bg: rgba(255, 255, 255, 0.55);
-  --card-border: rgba(255, 255, 255, 0.6);
+  --background: #f5f6f8;
+  --foreground: #1b1f24;
+  --muted-foreground: #6b7280;
+  --card-bg: #ffffff;
+  --card-border: #e3e5e8;
+  --accent: #1d4ed8;
+  --accent-hover: #1740b0;
 }
 
 .dark {
-  --background: #1c1613;
-  --foreground: #f3ece5;
-  --bg-gradient-from: #211a17;
-  --bg-gradient-to: #2c211b;
-  --card-bg: rgba(255, 255, 255, 0.06);
-  --card-border: rgba(255, 255, 255, 0.1);
+  --background: #15171a;
+  --foreground: #edeef0;
+  --muted-foreground: #9ca3af;
+  --card-bg: #1e2125;
+  --card-border: #2c2f34;
+  --accent: #5b8def;
+  --accent-hover: #7ba1f5;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  background-image: linear-gradient(160deg, var(--bg-gradient-from) 0%, var(--bg-gradient-to) 100%);
-  background-attachment: fixed;
   font-family: var(--font-pretendard), -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
 }
