@@ -4,6 +4,28 @@ import { links } from "@/data/profile";
 
 const knownLinkIds = new Set(links.map((link) => link.id));
 
+export async function GET() {
+  const counts = Object.fromEntries(links.map((link) => [link.id, 0]));
+
+  try {
+    const client = await getMongoClientPromise();
+    const db = client.db(getDbName());
+    const docs = await db
+      .collection<{ _id: string; count: number }>("clicks")
+      .find({ _id: { $in: Array.from(knownLinkIds) } })
+      .toArray();
+
+    for (const doc of docs) {
+      counts[doc._id] = doc.count;
+    }
+
+    return NextResponse.json(counts);
+  } catch (error) {
+    console.error("Failed to fetch click counts:", error);
+    return NextResponse.json(counts);
+  }
+}
+
 export async function POST(request: NextRequest) {
   try {
     const { linkId } = (await request.json()) as { linkId?: string };

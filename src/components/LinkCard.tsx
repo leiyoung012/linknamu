@@ -3,8 +3,21 @@
 import type { ProfileLink } from "@/data/profile";
 import LinkIcon from "./LinkIcon";
 
-export default function LinkCard({ id, label, description, url }: ProfileLink) {
+type LinkCardProps = ProfileLink & {
+  count: number;
+  onClickIncrement: () => void;
+};
+
+export default function LinkCard({
+  id,
+  label,
+  description,
+  url,
+  count,
+  onClickIncrement,
+}: LinkCardProps) {
   function handleClick() {
+    onClickIncrement();
     fetch("/api/click", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -24,13 +37,16 @@ export default function LinkCard({ id, label, description, url }: ProfileLink) {
       <span className="flex h-10 w-10 shrink-0 items-center justify-center">
         <LinkIcon id={id} />
       </span>
-      <span className="flex flex-col">
+      <span className="flex flex-1 flex-col">
         {label}
         {description && (
           <span className="text-sm font-normal text-muted-foreground">
             {description}
           </span>
         )}
+      </span>
+      <span className="shrink-0 text-xs font-normal text-muted-foreground">
+        {count}회
       </span>
     </a>
   );
