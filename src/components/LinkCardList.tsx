@@ -1,18 +1,17 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import type { ProfileLink } from "@/data/profile";
 import LinkCard from "./LinkCard";
 
-export default function LinkCardList({ links }: { links: ProfileLink[] }) {
-  const [counts, setCounts] = useState<Record<string, number>>({});
-
-  useEffect(() => {
-    fetch("/api/click")
-      .then((res) => res.json())
-      .then((data: Record<string, number>) => setCounts(data))
-      .catch(() => {});
-  }, []);
+export default function LinkCardList({
+  links,
+  initialCounts,
+}: {
+  links: ProfileLink[];
+  initialCounts: Record<string, number>;
+}) {
+  const [counts, setCounts] = useState<Record<string, number>>(initialCounts);
 
   function incrementCount(id: string) {
     setCounts((prev) => ({ ...prev, [id]: (prev[id] ?? 0) + 1 }));
